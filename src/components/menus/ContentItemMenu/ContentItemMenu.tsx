@@ -1,11 +1,7 @@
 import { Icon } from "@/components/legacy-ui/Icon";
-import { Toolbar } from "@/components/legacy-ui/Toolbar";
 import DragHandle from "@tiptap-pro/extension-drag-handle-react";
 import { Editor } from "@tiptap/react";
 
-import * as Popover from "@radix-ui/react-popover";
-import { Surface } from "@/components/legacy-ui/Surface";
-import { DropdownButton } from "@/components/legacy-ui/Dropdown";
 import useContentItemActions from "./hooks/useContentItemActions";
 import { useData } from "./hooks/useData";
 import { useEffect, useState } from "react";
@@ -15,7 +11,7 @@ import {
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
-  DropdownMenuLabel,
+  DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
@@ -55,6 +51,7 @@ export const ContentItemMenu = ({ editor }: ContentItemMenuProps) => {
         <Button variant="ghost" size="icon" onClick={actions.handleAdd}>
           <Icon name="Plus" />
         </Button>
+
         <DropdownMenu open={menuOpen} onOpenChange={setMenuOpen}>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" size="icon">
@@ -65,42 +62,31 @@ export const ContentItemMenu = ({ editor }: ContentItemMenuProps) => {
           <DropdownMenuContent className="w-56">
             <DropdownMenuGroup>
               <DropdownMenuItem onClick={actions.resetTextFormatting}>
-                <Icon name="RemoveFormatting" />
+                <Icon name="RemoveFormatting" className="mr-2" />
                 <span>Clear formatting</span>
                 <DropdownMenuShortcut>⌘+B</DropdownMenuShortcut>
               </DropdownMenuItem>
-            </DropdownMenuGroup>
 
-            <Surface className="p-2 flex flex-col min-w-[16rem]">
-              <Popover.Close>
-                <DropdownButton onClick={actions.resetTextFormatting}>
-                  <Icon name="RemoveFormatting" />
-                  Clear formatting
-                </DropdownButton>
-              </Popover.Close>
-              <Popover.Close>
-                <DropdownButton onClick={actions.copyNodeToClipboard}>
-                  <Icon name="Clipboard" />
-                  Copy to clipboard
-                </DropdownButton>
-              </Popover.Close>
-              <Popover.Close>
-                <DropdownButton onClick={actions.duplicateNode}>
-                  <Icon name="Copy" />
-                  Duplicate
-                </DropdownButton>
-              </Popover.Close>
-              <Toolbar.Divider horizontal />
-              <Popover.Close>
-                <DropdownButton
-                  onClick={actions.deleteNode}
-                  className="text-red-500 bg-red-500 dark:text-red-500 hover:bg-red-500 dark:hover:text-red-500 dark:hover:bg-red-500 bg-opacity-10 hover:bg-opacity-20 dark:hover:bg-opacity-20"
-                >
-                  <Icon name="Trash2" />
-                  Delete
-                </DropdownButton>
-              </Popover.Close>
-            </Surface>
+              <DropdownMenuItem onClick={actions.copyNodeToClipboard}>
+                <Icon name="Clipboard" className="mr-2" />
+                <span>Copy to clipboard</span>
+                <DropdownMenuShortcut>⌘+B</DropdownMenuShortcut>
+              </DropdownMenuItem>
+
+              <DropdownMenuItem onClick={actions.duplicateNode}>
+                <Icon name="Copy" className="mr-2" />
+                <span>Duplicate</span>
+                <DropdownMenuShortcut>⌘+B</DropdownMenuShortcut>
+              </DropdownMenuItem>
+
+              <DropdownMenuSeparator />
+
+              <DropdownMenuItem onClick={actions.deleteNode}>
+                <Icon name="Trash2" className="mr-2" />
+                <span>Delete</span>
+                <DropdownMenuShortcut>⌘+B</DropdownMenuShortcut>
+              </DropdownMenuItem>
+            </DropdownMenuGroup>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
