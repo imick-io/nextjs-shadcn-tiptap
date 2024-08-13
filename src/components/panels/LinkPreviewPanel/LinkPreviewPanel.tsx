@@ -1,4 +1,4 @@
-import { Icon } from "@/components/legacy-ui/Icon";
+import { Icon } from "@/components/ui/icon";
 import { Surface } from "@/components/legacy-ui/Surface";
 import { Toolbar } from "@/components/legacy-ui/Toolbar";
 import Tooltip from "@/components/legacy-ui/Tooltip";

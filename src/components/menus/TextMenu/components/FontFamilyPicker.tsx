@@ -2,7 +2,7 @@ import {
   DropdownButton,
   DropdownCategoryTitle,
 } from "@/components/legacy-ui/Dropdown";
-import { Icon } from "@/components/legacy-ui/Icon";
+import { Icon } from "@/components/ui/icon";
 import { Surface } from "@/components/legacy-ui/Surface";
 import { Toolbar } from "@/components/legacy-ui/Toolbar";
 import * as Dropdown from "@radix-ui/react-dropdown-menu";

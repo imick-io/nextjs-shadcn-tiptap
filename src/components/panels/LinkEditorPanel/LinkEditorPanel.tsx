@@ -1,5 +1,5 @@
 import { Button } from "@/components/legacy-ui/Button";
-import { Icon } from "@/components/legacy-ui/Icon";
+import { Icon } from "@/components/ui/icon";
 import { Surface } from "@/components/legacy-ui/Surface";
 import { Toggle } from "@/components/legacy-ui/Toggle";
 import { useState, useCallback, useMemo } from "react";

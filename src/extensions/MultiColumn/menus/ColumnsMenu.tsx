@@ -7,7 +7,7 @@ import { MenuProps } from "@/components/menus/types";
 import { getRenderContainer } from "@/lib/utils/getRenderContainer";
 import { Toolbar } from "@/components/legacy-ui/Toolbar";
 import { ColumnLayout } from "../Columns";
-import { Icon } from "@/components/legacy-ui/Icon";
+import { Icon } from "@/components/ui/icon";
 
 export const ColumnsMenu = ({ editor, appendTo }: MenuProps) => {
   const getReferenceClientRect = useCallback(() => {

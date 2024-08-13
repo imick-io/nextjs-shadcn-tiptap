@@ -2,7 +2,7 @@ import { useCallback, useState } from "react";
 import { HexColorPicker } from "react-colorful";
 import { ColorButton } from "./ColorButton";
 import { Toolbar } from "../../legacy-ui/Toolbar";
-import { Icon } from "../../legacy-ui/Icon";
+import { Icon } from "@/components/ui/icon";
 import { themeColors } from "@/lib/constants";
 
 export type ColorPickerProps = {

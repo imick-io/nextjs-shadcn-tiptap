@@ -1,13 +1,15 @@
-import { Icon } from "@/components/legacy-ui/Icon";
+import { Icon } from "@/components/ui/icon";
 import { icons } from "lucide-react";
 import { useMemo } from "react";
-import * as Dropdown from "@radix-ui/react-dropdown-menu";
-import { Toolbar } from "@/components/legacy-ui/Toolbar";
-import { Surface } from "@/components/legacy-ui/Surface";
+import { Button } from "@/components/ui/button";
 import {
-  DropdownButton,
-  DropdownCategoryTitle,
-} from "@/components/legacy-ui/Dropdown";
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export type ContentTypePickerOption = {
   label: string;
@@ -48,10 +50,14 @@ export const ContentTypePicker = ({ options }: ContentTypePickerProps) => {
   );
 
   return (
-    <Dropdown.Root>
-      <Dropdown.Trigger asChild>
-        <Toolbar.Button
-          active={activeItem?.id !== "paragraph" && !!activeItem?.type}
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button
+          variant={
+            activeItem?.id !== "paragraph" && !!activeItem?.type
+              ? "secondary"
+              : "ghost"
+          }
         >
           <Icon
             name={
@@ -59,34 +65,33 @@ export const ContentTypePicker = ({ options }: ContentTypePickerProps) => {
             }
           />
           <Icon name="ChevronDown" className="w-2 h-2" />
-        </Toolbar.Button>
-      </Dropdown.Trigger>
-      <Dropdown.Content asChild>
-        <Surface className="flex flex-col gap-1 px-2 py-4">
-          {options.map((option) => {
-            if (isOption(option)) {
-              return (
-                <DropdownButton
-                  key={option.id}
-                  onClick={option.onClick}
-                  isActive={option.isActive()}
-                >
-                  <Icon name={option.icon} className="w-4 h-4 mr-1" />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent withPortal={false}>
+        {options.map((option) => {
+          if (isOption(option)) {
+            return (
+              <DropdownMenuItem
+                key={option.id}
+                onClick={option.onClick}
+                isActive={option.isActive()}
+              >
+                <Icon name={option.icon} className="mr-1" />
+                {option.label}
+              </DropdownMenuItem>
+            );
+          } else if (isCategory(option)) {
+            return (
+              <>
+                <DropdownMenuLabel key={option.id}>
                   {option.label}
-                </DropdownButton>
-              );
-            } else if (isCategory(option)) {
-              return (
-                <div className="mt-2 first:mt-0" key={option.id}>
-                  <DropdownCategoryTitle key={option.id}>
-                    {option.label}
-                  </DropdownCategoryTitle>
-                </div>
-              );
-            }
-          })}
-        </Surface>
-      </Dropdown.Content>
-    </Dropdown.Root>
+                </DropdownMenuLabel>
+                <DropdownMenuSeparator />
+              </>
+            );
+          }
+        })}
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 };

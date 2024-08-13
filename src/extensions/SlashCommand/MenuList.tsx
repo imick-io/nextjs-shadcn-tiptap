@@ -4,7 +4,7 @@ import { Command, MenuListProps } from "./types";
 import { CommandButton } from "./CommandButton";
 import { Surface } from "@/components/legacy-ui/Surface";
 import { DropdownButton } from "@/components/legacy-ui/Dropdown";
-import { Icon } from "@/components/legacy-ui/Icon";
+import { Icon } from "@/components/ui/icon";
 
 export const MenuList = React.forwardRef((props: MenuListProps, ref) => {
   const scrollContainer = useRef<HTMLDivElement>(null);

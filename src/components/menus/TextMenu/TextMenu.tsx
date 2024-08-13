@@ -1,4 +1,4 @@
-import { Icon } from "@/components/legacy-ui/Icon";
+import { Icon } from "@/components/ui/icon";
 import { Toolbar } from "@/components/legacy-ui/Toolbar";
 import { useTextmenuCommands } from "./hooks/useTextmenuCommands";
 import { useTextmenuStates } from "./hooks/useTextmenuStates";

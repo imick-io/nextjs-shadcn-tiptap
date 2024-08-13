@@ -1,7 +1,7 @@
 import { Spinner } from "@/components/legacy-ui/Spinner";
 import { useDropZone, useFileUpload, useUploader } from "./hooks";
 import { Button } from "@/components/legacy-ui/Button";
-import { Icon } from "@/components/legacy-ui/Icon";
+import { Icon } from "@/components/ui/icon";
 import { cn } from "@/lib/utils";
 import { ChangeEvent, useCallback } from "react";
 

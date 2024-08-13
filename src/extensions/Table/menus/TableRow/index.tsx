@@ -4,7 +4,7 @@ import * as PopoverMenu from "@/components/legacy-ui/PopoverMenu";
 
 import { Toolbar } from "@/components/legacy-ui/Toolbar";
 import { isRowGripSelected } from "./utils";
-import { Icon } from "@/components/legacy-ui/Icon";
+import { Icon } from "@/components/ui/icon";
 import { MenuProps, ShouldShowProps } from "@/components/menus/types";
 
 export const TableRowMenu = React.memo(

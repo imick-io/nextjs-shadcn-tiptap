@@ -1,4 +1,4 @@
-import { Icon } from "@/components/legacy-ui/Icon";
+import { Icon } from "@/components/ui/icon";
 import DragHandle from "@tiptap-pro/extension-drag-handle-react";
 import { Editor } from "@tiptap/react";
 
@@ -7,14 +7,12 @@ import { useData } from "./hooks/useData";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { Separator } from "@/components/ui/separator";
+import { Shortcut } from "@/components/ui/shortcut";
 
 export type ContentItemMenuProps = {
   editor: Editor;
@@ -52,43 +50,53 @@ export const ContentItemMenu = ({ editor }: ContentItemMenuProps) => {
           <Icon name="Plus" />
         </Button>
 
-        <DropdownMenu open={menuOpen} onOpenChange={setMenuOpen}>
-          <DropdownMenuTrigger asChild>
+        <Popover open={menuOpen} onOpenChange={setMenuOpen}>
+          <PopoverTrigger asChild>
             <Button variant="ghost" size="icon">
               <Icon name="GripVertical" />
             </Button>
-          </DropdownMenuTrigger>
+          </PopoverTrigger>
 
-          <DropdownMenuContent className="w-56">
-            <DropdownMenuGroup>
-              <DropdownMenuItem onClick={actions.resetTextFormatting}>
-                <Icon name="RemoveFormatting" className="mr-2" />
-                <span>Clear formatting</span>
-                <DropdownMenuShortcut>⌘+B</DropdownMenuShortcut>
-              </DropdownMenuItem>
+          <PopoverContent className="w-60 p-2">
+            <Button
+              onClick={actions.resetTextFormatting}
+              variant="ghost"
+              className="w-full justify-start px-2 space-x-2"
+            >
+              <Icon name="RemoveFormatting" />
+              <span>Clear formatting</span>
+            </Button>
 
-              <DropdownMenuItem onClick={actions.copyNodeToClipboard}>
-                <Icon name="Clipboard" className="mr-2" />
-                <span>Copy to clipboard</span>
-                <DropdownMenuShortcut>⌘+B</DropdownMenuShortcut>
-              </DropdownMenuItem>
+            <Button
+              onClick={actions.copyNodeToClipboard}
+              variant="ghost"
+              className="w-full justify-start px-2 space-x-2"
+            >
+              <Icon name="Clipboard" />
+              <span>Copy to clipboard</span>
+            </Button>
 
-              <DropdownMenuItem onClick={actions.duplicateNode}>
-                <Icon name="Copy" className="mr-2" />
-                <span>Duplicate</span>
-                <DropdownMenuShortcut>⌘+B</DropdownMenuShortcut>
-              </DropdownMenuItem>
+            <Button
+              onClick={actions.duplicateNode}
+              variant="ghost"
+              className="w-full justify-start px-2 space-x-2"
+            >
+              <Icon name="Copy" />
+              <span>Duplicate</span>
+            </Button>
 
-              <DropdownMenuSeparator />
+            <Separator />
 
-              <DropdownMenuItem onClick={actions.deleteNode}>
-                <Icon name="Trash2" className="mr-2" />
-                <span>Delete</span>
-                <DropdownMenuShortcut>⌘+B</DropdownMenuShortcut>
-              </DropdownMenuItem>
-            </DropdownMenuGroup>
-          </DropdownMenuContent>
-        </DropdownMenu>
+            <Button
+              onClick={actions.deleteNode}
+              variant="ghost"
+              className="w-full justify-start px-2 space-x-2"
+            >
+              <Icon name="Trash2" />
+              <span>Delete</span>
+            </Button>
+          </PopoverContent>
+        </Popover>
       </div>
     </DragHandle>
   );
